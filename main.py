@@ -1,19 +1,30 @@
 from Screen import Screen
 from Sensor import Sensor
 from Square import Square
+from NeuralNet import Util
+import pygame, sys
+from pygame.locals import *
 
+MAX_ROWS = 100
+MAX_COLS = 100
+SENSORS_PER_SQUARE = 10
+SQ_SIZE = 6
+
+pygame.init()
 screen = Screen()
-squares = []
 
-MAX_ROWS = 3
-MAX_COLS = 3
+while True:
+    squares = []
+    sensors = Sensor.generate_n_sensors(MAX_ROWS, MAX_COLS, SENSORS_PER_SQUARE)
 
-for i in range(0, MAX_ROWS):
-    for j in range(0, MAX_COLS):
-        squares.append(Square(i, j, Sensor.get_input()))
+    for i in range(0, MAX_COLS):
+        for j in range(0, MAX_ROWS):
+            average = Util.get_avg(sensors, i, j)
+            squares.append(Square(i, j, average))
 
-for square in squares:
-    print(str(square.get_id()) + " with colour " + str(Screen.get_hex_from_int(square.get_colour())))
+    screen.draw(squares, SQ_SIZE)
 
-screen.map_to_screen(squares)
-
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()

@@ -1,8 +1,4 @@
 class Square:
-    x_id = None
-    y_id = None
-    colour = None
-
     def __init__(self, x_id, y_id, colour):
         self.x_id = x_id
         self.y_id = y_id
