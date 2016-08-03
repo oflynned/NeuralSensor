@@ -25,5 +25,4 @@ class Sensor:
             for j in range(sensors_per_tile):
                 sensor_tile.append(Sensor.generate_random_colour())
             sensor_data.append(sensor_tile)
-        #print sensor_data
         return sensor_data

@@ -1,13 +1,13 @@
 from Screen import Screen
 from Sensor import Sensor
 from Square import Square
-from NeuralNet import Util
+from NeuralNet import Util, NeuralNet
 import pygame, sys
 from pygame.locals import *
 
 MAX_ROWS = 100
 MAX_COLS = 100
-SENSORS_PER_SQUARE = 10
+SENSORS_PER_SQUARE = 1
 SQ_SIZE = 6
 
 pygame.init()

@@ -13,9 +13,9 @@ class Screen:
         self.display.fill(Screen.WHITE)
 
     def draw(self, squares, SQ_SIZE):
-        #pygame.time.delay(100)
         for square in squares:
-            pygame.draw.rect(self.display, (square.get_colour(), 0, 0),
+            colour = square.get_colour()
+            pygame.draw.rect(self.display, (0, 0, colour),
                              (square.get_x() * SQ_SIZE, square.get_y() * SQ_SIZE, SQ_SIZE, SQ_SIZE))
         pygame.display.update()
 
