@@ -1,5 +1,6 @@
 import struct
 import pygame
+from Constants import Constants
 
 
 class Screen:
@@ -12,14 +13,10 @@ class Screen:
         pygame.display.set_caption("AI Art")
         self.display.fill(Screen.WHITE)
 
-    def draw(self, squares, SQ_SIZE):
+    def draw(self, squares):
         for square in squares:
-            colour = square.get_colour()
-            pygame.draw.rect(self.display, (0, 0, colour),
-                             (square.get_x() * SQ_SIZE, square.get_y() * SQ_SIZE, SQ_SIZE, SQ_SIZE))
+            colour = (int(square.get_colour()), 0, 0)
+            pygame.draw.rect(self.display, colour,
+                             (square.get_x() * Constants.SQ_SIZE, square.get_y() * Constants.SQ_SIZE,
+                              Constants.SQ_SIZE, Constants.SQ_SIZE))
         pygame.display.update()
-
-    @staticmethod
-    def get_hex_from_int(rgb_int):
-        rgb = (rgb_int, 0, 0)
-        return "#" + str(struct.pack('BBB', *rgb).encode('hex'))

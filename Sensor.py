@@ -1,4 +1,5 @@
 import random
+from Constants import Constants
 
 
 class Sensor:
@@ -18,11 +19,15 @@ class Sensor:
         return random.randint(0, 255)
 
     @staticmethod
-    def generate_n_sensors(n, m, sensors_per_tile):
+    def logarithmic_splicing():
+        return 600
+
+    @staticmethod
+    def generate_n_sensors(n, m):
         sensor_data = []
         for i in range(n*m):
-            sensor_tile = []
-            for j in range(sensors_per_tile):
-                sensor_tile.append(Sensor.generate_random_colour())
-            sensor_data.append(sensor_tile)
+            if i < Sensor.logarithmic_splicing():
+                sensor_data.append(Sensor.generate_light())
+            else:
+                sensor_data.append(Sensor.generate_dark())
         return sensor_data
