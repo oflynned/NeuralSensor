@@ -8,10 +8,9 @@ class Util:
 
 
 class NeuralNet:
-    def __init__(self):
-        self.X = tf.placeholder(tf.int32, None)
 
-    def interpolate(self, data):
+    @staticmethod
+    def interpolate(data):
         print data
 
         with tf.Session as session:

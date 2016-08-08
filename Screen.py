@@ -1,11 +1,11 @@
 import struct
 import pygame
 from Constants import Constants
-
+import random
 
 class Screen:
-    WIDTH = 600
-    HEIGHT = 600
+    WIDTH = 100
+    HEIGHT = 100
     WHITE = (255, 255, 255)
 
     def __init__(self):
@@ -15,8 +15,7 @@ class Screen:
 
     def draw(self, squares):
         for square in squares:
-            colour = (int(square.get_colour()), 0, 0)
-            pygame.draw.rect(self.display, colour,
+            pygame.draw.rect(self.display, square.get_colour(),
                              (square.get_x() * Constants.SQ_SIZE, square.get_y() * Constants.SQ_SIZE,
                               Constants.SQ_SIZE, Constants.SQ_SIZE))
         pygame.display.update()
